@@ -20,11 +20,11 @@ function init() {
   // Load the country borders (GeoJSON)
   loadGeoJSON('/assets/data/countries.geo.json');  // Use your countries.geo.json file
 
-  // Load the mining data CSV
-  loadCSV('/assets/data/mining_n.csv');
-
   // Add mouse move event listener
   document.addEventListener('mousemove', onMouseMove, false);
+
+  // Add scrape button event listener
+  document.getElementById('scrape-button').addEventListener('click', scrapeData);
 
   // Animation loop
   function animate() {
@@ -34,19 +34,23 @@ function init() {
   animate();
 }
 
-// Function to load CSV data
-function loadCSV(url) {
-  d3.csv(url).then(data => {
-    data.forEach((row, index) => {
-      // Normalize country names (trim, uppercase)
-      const normalizedCountry = row.ISO3_CODE.trim().toUpperCase();
-      // Store the mining data, keyed by normalized ISO3_CODE
-      miningData[normalizedCountry] = row.N_FEATURES;
-    });
+// Function to scrape data dynamically using Flask
+function scrapeData() {
+  fetch('http://127.0.0.1:5000/scrape', {
+    method: 'GET',
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Update miningData with the scraped data
+    miningData = data.data;
 
-    // Log a sample of the loaded data to verify it's correct
-    console.log("Mining Data Sample:", miningData);
-  }).catch(error => console.error('Error loading CSV:', error));
+    // Optionally, remove this line if you don't want to print the data:
+    // console.log('Scraped Data:', data.data);
+
+    // Optionally, remove this line to stop showing data in scrape-results div:
+    // document.getElementById('scrape-results').innerHTML = JSON.stringify(miningData);
+  })
+  .catch(error => console.error('Error scraping data:', error));
 }
 
 function onMouseMove(event) {
@@ -77,17 +81,16 @@ function onMouseMove(event) {
         // Get the GeoJSON properties
         const countryData = mesh.userData.geoData;
 
-        // Get the country name and ISO code from GeoJSON
+        // Get the country name from GeoJSON
         const countryName = countryData.SOVEREIGNT || "Unknown";
-        const isoCode = countryData.ADM0_A3 || countryData.GU_A3 || countryData.SOV_A3 || "Unknown";  // Prefer ADM0_A3 or GU_A3 over SOV_A3
-        console.log(`Country: ${countryName}, ISO: ${isoCode}`);
+        console.log(`Country: ${countryName}`);
 
-        // Match the ISO code from GeoJSON with the mining dataset ISO3_CODE
-        const nFeatures = miningData[isoCode.trim().toUpperCase()] || "No mining data available";
+        // Fetch mining data from the updated miningData object (from the scrape)
+        const production = miningData[countryName] || "0";
 
         // Display the essential information in the info box
         let infoContent = `<strong>Country: ${countryName}</strong><br>`;
-        infoContent += `Mining Features: ${nFeatures}<br>`;
+        infoContent += `Mining Production: ${production}<br>`;
 
         document.getElementById('info').innerHTML = infoContent;
       } else {
@@ -97,8 +100,6 @@ function onMouseMove(event) {
     }
   });
 }
-
-
 
 // Simple point-in-polygon algorithm
 function isPointInPolygon(mouse, points) {

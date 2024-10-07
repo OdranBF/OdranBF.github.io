@@ -23,6 +23,28 @@
       font-size: 14px;
       color: #333;
     }
+    #controls {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    #scrape-results {
+      position: absolute;
+      top: 150px;
+      left: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -30,6 +52,20 @@
 
   <!-- Info div to display country and mining data -->
   <div id="info">Hover over a country to see mining data.</div>
+
+  <!-- Controls for inputting year and commodity -->
+  <div id="controls">
+    <label for="year">Year:</label>
+    <input type="text" id="year" value="2022">
+    <br>
+    <label for="commodity">Commodity:</label>
+    <input type="text" id="commodity" value="57">
+    <br>
+    <button id="scrape-button">Scrape Data</button>
+  </div>
+
+  <!-- Make sure to include the JavaScript file -->
+  <script src="/assets/js/scrape.js"></script>
 
   <!-- Import the Three.js library via CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -41,5 +77,3 @@
   <script src="map.js"></script>
 </body>
 </html>
-
-

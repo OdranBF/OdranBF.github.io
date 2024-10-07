@@ -1,0 +1,131 @@
+{
+    "id":"world-mineral-statistics",
+    "title":"BGS World Mineral Statistics",
+    "description":"Welcome to the World Mineral Statistics archive API. The British Geological Survey (BGS) and its predecessor organisations have compiled production and trade statistics on a wide range of mineral commodities since 1913. Currently this tool permits access to data from the World Mineral Statistics archive for the years 1970 to 2022. Prior to 1970 the data are available in PDF files which you can download for free from the main archive page. Selected data from 1960 are also available from the main archive as a static table in MS Excel. For certain commodities data are not available for all years, for example the BGS commenced collation of data for primary aggregates in 1998 and consequently there are no data for earlier years for this particular commodity. Trade data (imports and exports) are available for all countries up to 2002, and for selected European countries only from 2003 to 2018. Please ensure that you have read and understand our terms and conditions for the data.",
+    "keywords":[
+        "minerals",
+        "statistics",
+        "global"
+    ],
+    "links":[
+        {
+            "type":"text/html",
+            "rel":"canonical",
+            "title":"information",
+            "href":"https://www2.bgs.ac.uk/mineralsuk/statistics/",
+            "hreflang":"en-US"
+        },
+        {
+            "type":"text/html",
+            "rel":"canonical",
+            "title":"Terms and Conditions",
+            "href":"https://www2.bgs.ac.uk/mineralsUk/statistics/termsAndConditions.html",
+            "hreflang":"en-US"
+        },
+        {
+            "type":"text/html",
+            "rel":"canonical",
+            "title":"Metadata",
+            "href":"http://data.bgs.ac.uk/id/dataHolding/13480180",
+            "hreflang":"en-US"
+        },
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://ogcapi.bgs.ac.uk?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://ogcapi.bgs.ac.uk?f=html"
+        },
+        {
+            "type":"application/json",
+            "rel":"self",
+            "title":"This document as JSON",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics?f=json"
+        },
+        {
+            "type":"application/ld+json",
+            "rel":"alternate",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics?f=jsonld"
+        },
+        {
+            "type":"text/html",
+            "rel":"alternate",
+            "title":"This document as HTML",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics?f=html"
+        },
+        {
+            "type":"application/json",
+            "rel":"http://www.opengis.net/def/rel/ogc/1.0/schema",
+            "title":"Schema of collection in JSON",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/schema?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"http://www.opengis.net/def/rel/ogc/1.0/schema",
+            "title":"Schema of collection in HTML",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/schema?f=html"
+        },
+        {
+            "type":"application/schema+json",
+            "rel":"http://www.opengis.net/def/rel/ogc/1.0/queryables",
+            "title":"Queryables for this collection as JSON",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/queryables?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"http://www.opengis.net/def/rel/ogc/1.0/queryables",
+            "title":"Queryables for this collection as HTML",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/queryables?f=html"
+        },
+        {
+            "type":"application/geo+json",
+            "rel":"items",
+            "title":"Items as GeoJSON",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=json"
+        },
+        {
+            "type":"application/ld+json",
+            "rel":"items",
+            "title":"Items as RDF (GeoJSON-LD)",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=jsonld"
+        },
+        {
+            "type":"text/html",
+            "rel":"items",
+            "title":"Items as HTML",
+            "href":"https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=html"
+        }
+    ],
+    "extent":{
+        "spatial":{
+            "bbox":[
+                [
+                    -119.677633,
+                    -44.75072,
+                    177.97519799999998,
+                    74.02784799999999
+                ]
+            ],
+            "crs":"http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+        },
+        "temporal":{
+            "interval":[
+                [
+                    "1970-01-01",
+                    null
+                ]
+            ]
+        }
+    },
+    "itemType":"feature",
+    "crs":[
+        "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+    ],
+    "storageCRS":"http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+}
