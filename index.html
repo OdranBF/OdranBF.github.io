@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continuous Scroll World Map</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+    #info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="mapCanvas"></canvas>
+
+  <!-- Info div to display country and mining data -->
+  <div id="info">Hover over a country to see mining data.</div>
+
+  <!-- Import the Three.js library via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Import the D3.js library via CDN -->
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+
+  <!-- Load the map JavaScript file -->
+  <script src="map.js"></script>
+</body>
+</html>
+
+
