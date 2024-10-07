@@ -1,24 +1,23 @@
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
+import time
 
 app = Flask(__name__)
 CORS(app)
 
-# Hardcoded lists for now, can later be updated with more values or dynamic sources
-years = [2022, 2021, 2020]  # List of years
-commodities = [57, 128, 40]  # Example commodity codes (e.g., 57 for gold)
+# Global variables to track the year and commodity
+current_year = 2022
+commodity = 57  # Default commodity code
 
 
 @app.route('/scrape', methods=['GET'])
 def scrape_data():
-    # Fetching year and commodity from query parameters or defaulting to the first in the list
-    year = request.args.get('year', years[0])
-    commodity = request.args.get('commodity', commodities[0])
+    global current_year
 
-    # URL with the selected year and commodity
-    url = f'https://www2.bgs.ac.uk/mineralsUK/data-download/wms.cfc?method=listResults&dataType=Production&commodity={commodity}&dateFrom={year}&dateTo={year}&country=&agreeToTsAndCs=agreed'
+    # Construct the URL dynamically based on the year
+    url = f'https://www2.bgs.ac.uk/mineralsUK/data-download/wms.cfc?method=listResults&dataType=Production&commodity={commodity}&dateFrom={current_year}&dateTo={current_year}&country=&agreeToTsAndCs=agreed'
 
     response = requests.get(url)
 
@@ -40,12 +39,12 @@ def scrape_data():
             if production:
                 cleaned_data[country] = production
 
-        return jsonify({
-            'status': 'Scraping completed!',
-            'year': year,
-            'commodity': commodity,
-            'data': cleaned_data
-        })
+        # Decrease the year by 1, loop back to 2022 if below 1970
+        current_year -= 1
+        if current_year < 1990:
+            current_year = 2022
+
+        return jsonify({'status': 'Scraping completed!', 'data': cleaned_data, 'year': current_year})
     else:
         return jsonify({'status': 'Failed to scrape data', 'error': response.status_code})
 
